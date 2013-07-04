@@ -34,6 +34,7 @@ public class MainActivity extends Activity{
     private RelativeLayout.LayoutParams params;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //this is main activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
