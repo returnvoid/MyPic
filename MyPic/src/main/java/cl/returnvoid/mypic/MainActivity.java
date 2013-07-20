@@ -33,10 +33,7 @@ class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback{
     public PreviewCamera(Context context, AttributeSet attrs){
         super(context, attrs);
         //setWillNotDraw(false);
-        if(getHolder() == null){
-            getHolder().addCallback(this);
-        }
-
+        getHolder().addCallback(this);
     }
 
     @Override
@@ -73,12 +70,8 @@ class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback{
             if(!folder.exists()){
                 folder.mkdir();
             }
-            int number;
-            if(folder.listFiles() == null){
-                number = folder.listFiles().length;
-            }else{
-                number = 99999999;
-            }
+            int number = folder.listFiles().length;;
+
             String photoName = "mypic" + number + ".jpg";
             File photo = new File(folder, photoName);
 
@@ -102,6 +95,7 @@ class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback{
                         }
                     }
             );
+            camera.startPreview();
         }
     };
 
