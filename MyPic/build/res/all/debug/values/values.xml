@@ -31,6 +31,10 @@
     <string name="pref_header_general">General</string>
     <string name="pref_title_enabled_option">Enable social recommendations</string>
     <string name="pref_title_sync_frequency">Sync frequency</string>
+    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml -->
+    <string name="shutter_button">Tomar Foto</string>
+    <string name="title_activity_process_image">ProcessImageActivity</string>
+    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml -->
     <string name="title_activity_settings">Settings</string>
     <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/styles.xml -->
     <style name="AppBaseTheme" parent="android:Theme.Light">

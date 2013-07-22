@@ -41,7 +41,7 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     protected void onDraw(Canvas canvas){
-        Log.w(this.getClass().getName(), "On Draw Called");
+        Log.d(PREVIEW_CAMERA, "On Draw Called");
     }
 
     public void previewAsBitmap(Intent imageIntent){
@@ -75,7 +75,7 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
             }
             int number = folder.listFiles().length;;
 
-            String photoName = "mypic_" + number + String.format("_%d_", System.currentTimeMillis()) + ".jpg";
+            String photoName = "mypic_" + number + String.format("_%d", System.currentTimeMillis()) + ".jpg";
             File photo = new File(folder, photoName);
 
             imageSaved = Uri.fromFile(photo);
@@ -108,7 +108,7 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
                 Log.d(PREVIEW_CAMERA, "imageSaved: " + imageSaved.toString());
             }
             catch (java.io.IOException e) {
-                Log.e("PictureDemo", "Exception in photoCallback", e);
+                Log.e(PREVIEW_CAMERA, "Exception in photoCallback", e);
             }
             MediaScannerConnection.scanFile(getContext(),
                 new String[]{photo.getPath()}, null,
@@ -133,7 +133,7 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
                 camera.setPreviewDisplay(getHolder());
             }
             catch (Throwable t) {
-                Log.d("T", t.toString());
+                Log.d(PREVIEW_CAMERA, t.toString());
             }
 
             if (!cameraConfigured) {
@@ -178,7 +178,7 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
 
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){
         initPreview(width, height);
-        Log.d("Callback", "startPreview auto");
+        Log.d(PREVIEW_CAMERA, "startPreview auto");
         startPreview();
     }
 

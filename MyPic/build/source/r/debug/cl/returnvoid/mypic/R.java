@@ -31,15 +31,20 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0002;
-        public static final int preview=0x7f0b0000;
+        public static final int action_settings=0x7f0b0004;
+        public static final int preview=0x7f0b0002;
+        public static final int preview_camera_container=0x7f0b0000;
         public static final int shutter=0x7f0b0001;
+        public static final int shutter_button=0x7f0b0003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int activity_process_image=0x7f030001;
+        public static final int fragment_preview_camera=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
+        public static final int process_image=0x7f0a0001;
     }
     public static final class string {
         /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml 
@@ -54,7 +59,13 @@ public final class R {
         public static final int pref_header_general=0x7f080005;
         public static final int pref_title_enabled_option=0x7f080006;
         public static final int pref_title_sync_frequency=0x7f080007;
-        public static final int title_activity_settings=0x7f080008;
+        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml 
+         */
+        public static final int shutter_button=0x7f080008;
+        public static final int title_activity_process_image=0x7f080009;
+        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml 
+         */
+        public static final int title_activity_settings=0x7f08000a;
     }
     public static final class style {
         /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/styles.xml 
