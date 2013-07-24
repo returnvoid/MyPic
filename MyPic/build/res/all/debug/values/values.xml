@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml -->
+    <!-- From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml -->
     <string-array name="pref_sync_frequency_titles">
         <item>15 minutes</item>
         <item>30 minutes</item>
@@ -18,25 +18,25 @@
         <item>360</item>
         <item>-1</item>
     </string-array>
-    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/dimens.xml -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml -->
     <string name="action_settings">Settings</string>
     <string name="app_name">MyPic</string>
     <string name="hello_world">Hello world!</string>
-    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml -->
+    <!-- From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml -->
     <string name="pref_description_enabled_option">Recommendations for people to contact based on your message history</string>
     <string name="pref_header_data_sync">Data &amp; sync</string>
     <string name="pref_header_general">General</string>
     <string name="pref_title_enabled_option">Enable social recommendations</string>
     <string name="pref_title_sync_frequency">Sync frequency</string>
-    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml -->
     <string name="shutter_button">Tomar Foto</string>
     <string name="title_activity_process_image">ProcessImageActivity</string>
-    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml -->
+    <!-- From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml -->
     <string name="title_activity_settings">Settings</string>
-    <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/styles.xml -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in

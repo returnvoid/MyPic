@@ -71,9 +71,8 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
             if(!folder.exists()){
                 folder.mkdir();
             }
-            int number = folder.listFiles().length;;
 
-            String photoName = "mypic_" + number + String.format("_%d", System.currentTimeMillis()) + ".jpg";
+            String photoName = "mypic_" + String.format("_%d", System.currentTimeMillis()) + ".jpg";
             File photo = new File(folder, photoName);
 
             imageSaved = Uri.fromFile(photo);
@@ -94,13 +93,8 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
                 Bitmap mutableBm = bmf.createBitmap(bmf, 0, 0, width, height, matrix, true);
 
                 Canvas canvas = new Canvas(mutableBm);
-                Typeface type = Typeface.create("Roboto", Typeface.BOLD);
                 Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-                paint.setColor(Color.WHITE);
-                paint.setTypeface(type);
-                paint.setTextSize(60);
                 canvas.drawBitmap(mutableBm, 0, 0, paint);
-                canvas.drawText("#Hinchagram", 60, h - 60, paint);
 
                 mutableBm.compress(Bitmap.CompressFormat.JPEG, 90, out);
                 Log.d(PREVIEW_CAMERA, "imageSaved: " + imageSaved.toString());
