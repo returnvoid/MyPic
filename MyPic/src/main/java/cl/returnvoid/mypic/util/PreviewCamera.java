@@ -17,8 +17,12 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,13 +32,12 @@ import java.io.FileOutputStream;
  */
 public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback{
     public static final String PREVIEW_CAMERA = "PREVIEW_CAMERA";
-    private Camera camera;
     private Boolean cameraConfigured = false;
+    private Camera camera;
     public Uri imageSaved;
-    public Intent imageIntent;
+
     public PreviewCamera(Context context, AttributeSet attrs){
         super(context, attrs);
-        //setWillNotDraw(false);
         imageSaved = Uri.EMPTY;
         getHolder().addCallback(this);
     }
@@ -42,13 +45,6 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
     @Override
     protected void onDraw(Canvas canvas){
         Log.d(PREVIEW_CAMERA, "On Draw Called");
-    }
-
-    public void previewAsBitmap(Intent imageIntent){
-        this.imageIntent = imageIntent;
-        if(camera!=null&&getHolder().getSurface()!=null){
-            camera.takePicture(shutterCallback, pictureCallback, jpegCallBack);
-        }
     }
 
     Camera.ShutterCallback shutterCallback = new Camera.ShutterCallback() {
@@ -79,7 +75,6 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
             File photo = new File(folder, photoName);
 
             imageSaved = Uri.fromFile(photo);
-            imageIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageSaved);
 
             try {
                 FileOutputStream out = new FileOutputStream(photo.getPath());
@@ -122,46 +117,42 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
         }
     };
 
-    public void reactivateCamera(){
-        camera.startPreview();
-    }
-
-
     private void initPreview(int width, int height) {
-        if (camera!=null && getHolder().getSurface()!=null) {
+        if (camera != null && getHolder().getSurface() != null) {
+            if (!cameraConfigured) {
+                Camera.Parameters parameters = camera.getParameters();
+                Camera.Size size = getBestPreviewSize(width, height, parameters);
+
+                if (size != null) {
+                    parameters.setPreviewSize(size.width, size.height);
+                    camera.setParameters(parameters);
+                    cameraConfigured = true;
+                }
+            }
             try {
+                camera.setDisplayOrientation(90);
                 camera.setPreviewDisplay(getHolder());
             }
             catch (Throwable t) {
                 Log.d(PREVIEW_CAMERA, t.toString());
             }
-
-            if (!cameraConfigured) {
-                Camera.Parameters parameters=camera.getParameters();
-                Camera.Size size=getBestPreviewSize(width, height, parameters);
-
-                if (size!=null) {
-                    parameters.setPreviewSize(size.width, size.height);
-                    camera.setParameters(parameters);
-                    cameraConfigured=true;
-                }
-            }
         }
     }
 
     private Camera.Size getBestPreviewSize(int width, int height, Camera.Parameters parameters) {
-        Camera.Size result=null;
+        Camera.Size result = null;
         for (Camera.Size size : parameters.getSupportedPreviewSizes()) {
-            if (size.width<=width && size.height<=height) {
-                if (result==null) {
-                    result=size;
+            if (size.width <= width && size.height <= height) {
+                if (result == null) {
+                    result = size;
                 }
                 else {
-                    int resultArea=result.width*result.height;
-                    int newArea=size.width*size.height;
 
-                    if (newArea>resultArea) {
-                        result=size;
+                    int resultArea = result.width * result.height;
+                    int newArea = size.width * size.height;
+                    Log.d(PREVIEW_CAMERA, "NOT NULL: " + resultArea + " - " + newArea);
+                    if (newArea > resultArea) {
+                        result = size;
                     }
                 }
             }
@@ -176,9 +167,24 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
         }
     }
 
+    /**
+     * Public API
+     * @param
+     */
+
+    public void previewAsBitmap(){
+        if(camera != null && getHolder().getSurface() != null){
+            camera.takePicture(shutterCallback, pictureCallback, jpegCallBack);
+        }
+    }
+
+    public void reactivateCamera(){
+        camera.startPreview();
+    }
+
+
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){
         initPreview(width, height);
-        Log.d(PREVIEW_CAMERA, "startPreview auto");
         startPreview();
     }
 
