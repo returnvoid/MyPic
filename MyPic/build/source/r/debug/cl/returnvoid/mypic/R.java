@@ -31,8 +31,9 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0004;
-        public static final int preview=0x7f0b0003;
+        public static final int action_settings=0x7f0b0005;
+        public static final int image=0x7f0b0003;
+        public static final int preview=0x7f0b0004;
         public static final int preview_camera_container=0x7f0b0000;
         public static final int shutter=0x7f0b0001;
         public static final int shutter_button=0x7f0b0002;

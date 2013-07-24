@@ -27,6 +27,8 @@ import android.view.WindowManager;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import cl.returnvoid.mypic.ProcessImageActivity;
+
 /**
  * Created by ggio on 20-07-13.
  */
@@ -87,6 +89,7 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
                 float scaleHeight = ((float) h) / height;
                 Matrix matrix = new Matrix();
                 matrix.postScale(scaleWidth, scaleHeight);
+                matrix.postRotate(90, 0, 0);
 
                 Bitmap mutableBm = bmf.createBitmap(bmf, 0, 0, width, height, matrix, true);
 
@@ -101,6 +104,10 @@ public class PreviewCamera extends SurfaceView implements SurfaceHolder.Callback
 
                 mutableBm.compress(Bitmap.CompressFormat.JPEG, 90, out);
                 Log.d(PREVIEW_CAMERA, "imageSaved: " + imageSaved.toString());
+
+                Intent processImageActivity = new Intent(getContext(), ProcessImageActivity.class);
+                processImageActivity.putExtra("imaged_saved_uri", imageSaved.getPath());
+                getContext().startActivity(processImageActivity);
             }
             catch (java.io.IOException e) {
                 Log.e(PREVIEW_CAMERA, "Exception in photoCallback", e);
