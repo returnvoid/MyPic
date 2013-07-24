@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import cl.returnvoid.mypic.R;
 import cl.returnvoid.mypic.util.PreviewCamera;
@@ -37,14 +38,7 @@ public class PreviewCameraFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-        Button shutter = (Button) getActivity().findViewById(R.id.shutter_button);
-        shutter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent imageIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                getPreview().previewAsBitmap(imageIntent);
-            }
-        });
+
     }
 
     @Override
