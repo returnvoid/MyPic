@@ -4,12 +4,13 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <cl.returnvoid.mypic.util.PreviewCamera
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/preview"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"/>
+
+    <view class="cl.returnvoid.mypic.fragments.PreviewCameraFragment$PreviewCamera"
+          android:layout_width="match_parent"
+          android:layout_height="fill_parent"
+          android:id="@+id/preview"
+          android:layout_alignParentTop="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentBottom="true"></view>
 
 </RelativeLayout>

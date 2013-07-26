@@ -2,6 +2,7 @@ package cl.returnvoid.mypic;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -48,8 +49,8 @@ public class MainActivity extends FragmentActivity {
                 .commit();
         previewCameraContainer.setVisibility(View.INVISIBLE);
 
-        Button shutter = (Button) findViewById(R.id.shutter);
-        shutter.setOnClickListener(new View.OnClickListener() {
+        Button initAppButton = (Button) findViewById(R.id.init_app_button);
+        initAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Button btn = (Button) view;
@@ -64,7 +65,7 @@ public class MainActivity extends FragmentActivity {
         shutterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                previewCameraFragment.getPreview().previewAsBitmap();
+                previewCameraFragment.getPreview().capturePreviewCamera();
             }
         });
         previewCameraContainer.setVisibility(View.VISIBLE);
@@ -73,6 +74,13 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onResume() {
         super.onResume();
+        //previewCameraFragment.getPreview().openCamera();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        //previewCameraFragment.getPreview().releaseCamera();
     }
 
     @Override

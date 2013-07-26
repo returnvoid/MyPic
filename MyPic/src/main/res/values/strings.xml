@@ -3,9 +3,9 @@
 
     <string name="app_name">MyPic</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_process_image">ProcessImageActivity</string>
-
+    <string name="title_activity_process_image">Process Image</string>
     <string name="shutter_button">Tomar Foto</string>
+    <string name="apply_effect_label_button">Apply Effect</string>
+    <string name="apply_text_label_button">Apply Text</string>
 
 </resources>

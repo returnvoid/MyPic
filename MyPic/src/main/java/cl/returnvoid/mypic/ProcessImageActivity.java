@@ -1,16 +1,12 @@
 package cl.returnvoid.mypic;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -24,13 +20,12 @@ import android.app.Activity;
 import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.net.URI;
 
 public class ProcessImageActivity extends Activity {
     public static final String PROCESS_IMAGE_ACTIVITY = "PROCESS_IMAGE_ACTIVITY";
@@ -46,19 +41,22 @@ public class ProcessImageActivity extends Activity {
         uri = getIntent().getStringExtra("imaged_saved_uri");
         Log.d(PROCESS_IMAGE_ACTIVITY, "uri: " + uri);
 
-        imageView = (ImageView)findViewById(R.id.image);
+        imageView = (ImageView) findViewById(R.id.image);
         file = new File(uri);
-        //imageView.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
-        imageView.setImageBitmap(new ProcessImage().applyEffect());
-
-        openDialog();
-
+        imageView.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
+        Button applyEffect = (Button) findViewById(R.id.apply_effect);
+        applyEffect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView.setImageBitmap(new ProcessImage().applyEffect());
+            }
+        });
+        //imageView.setImageBitmap(new ProcessImage().applyEffect());
+        //openDialog();
     }
 
     protected void openDialog(){
-
         AlertDialog.Builder alert = new AlertDialog.Builder(getBaseContext());
-
         alert.setTitle("Texto");
         alert.setMessage("Ingresa tu mensaje");
 
@@ -84,26 +82,14 @@ public class ProcessImageActivity extends Activity {
         alert.show();
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.process_image, menu);
-        return true;
-    }
-
     protected void saveNewFile(Bitmap bitmap) {
         try {
             FileOutputStream out = new FileOutputStream(uri);
             Bitmap bmf = bitmap;
             int w = 612;
             int h = 612;
-            int width = bmf.getWidth();
-            int height = bmf.getHeight();
-            float scaleWidth = ((float) w) / width;
-            float scaleHeight = ((float) h) / height;
 
-            Bitmap mutableBm = bmf.createBitmap(bmf, 0, 0, width, height);
+            Bitmap mutableBm = bmf.createBitmap(bmf, 0, 0, w, h);
 
             Canvas canvas = new Canvas(mutableBm);
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -123,6 +109,16 @@ public class ProcessImageActivity extends Activity {
         );
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.process_image, menu);
+        return true;
+    }
+
+
+    /**
+     * ProccessImage Class
+     */
     public class ProcessImage{
         public void ProccessImage(){
 
@@ -161,7 +157,7 @@ public class ProcessImageActivity extends Activity {
             Canvas canvas = new Canvas(result);
             canvas.drawBitmap(base, 0, 0, paintBase);
             canvas.drawBitmap(umbrella, 0, 0, paintUmbrella);
-            new TextOnImage().textOnImage(canvas);
+            //new TextOnImage().textOnImage(canvas);
             return result;
         }
     }
