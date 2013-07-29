@@ -1,1 +1,1 @@
-include ':MyPic'
+include ':libraries:facebook', ':MyPic'

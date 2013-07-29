@@ -1,74 +1,128 @@
 package cl.returnvoid.mypic;
 
+import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.facebook.LoggingBehavior;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.Settings;
+import com.facebook.model.GraphUser;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import cl.returnvoid.mypic.fragments.PreviewCameraFragment;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends Activity {
     private String ACTIVITY_TAG = "ACTIVITY_TAG";
-    public PreviewCameraFragment previewCameraFragment;
-    public Intent imageIntent;
-    protected Button shutterButton;
-    protected LinearLayout previewCameraContainer;
+    private Session.StatusCallback statusCallback = new SessionStatusCallback();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //this is main activity
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
-        previewCameraContainer = (LinearLayout) findViewById(R.id.preview_camera_container);
 
-        shutterButton = (Button)findViewById(R.id.shutter_button);
-        shutterButton.setVisibility(View.INVISIBLE);
-
-        Display display = getWindowManager().getDefaultDisplay();
-        previewCameraContainer.setLayoutParams(new LinearLayout.LayoutParams(display.getWidth(), display.getWidth() + 20));
-
-        previewCameraFragment = new PreviewCameraFragment();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.preview_camera_container, previewCameraFragment)
-                .commit();
-        previewCameraContainer.setVisibility(View.INVISIBLE);
-
-        Button initAppButton = (Button) findViewById(R.id.init_app_button);
-        initAppButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Button btn = (Button) view;
-                btn.setVisibility(View.GONE);
-                showPreviewCameraContainer();
+        Session session = Session.getActiveSession();
+        if (session == null) {
+            if (savedInstanceState != null) {
+                session = Session.restoreSession(this, null, statusCallback, savedInstanceState);
             }
-        });
+            if (session == null) {
+                session = new Session(this);
+            }
+            Session.setActiveSession(session);
+            if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
+                session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback));
+            }
+        }
+
+        updateView();
     }
 
-    private void showPreviewCameraContainer(){
-        shutterButton.setVisibility(View.VISIBLE);
-        shutterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                previewCameraFragment.getPreview().capturePreviewCamera();
+    private void updateView() {
+        Button facebookLogButton = (Button) findViewById(R.id.facebook_login_button);
+        Session session = Session.getActiveSession();
+        if (session.isOpened()) {
+            facebookLogButton.setText(R.string.facebook_login_button_label);
+            facebookLogButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) { onClickLogout(); }
+            });
+        } else {
+            facebookLogButton.setText(R.string.facebook_logout_button_label);
+            facebookLogButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) { onClickLogin(); }
+            });
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Session session = Session.getActiveSession();
+        Session.saveSession(session, outState);
+    }
+
+    private void onClickLogin() {
+        Session session = Session.getActiveSession();
+        if (!session.isOpened() && !session.isClosed()) {
+            session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback));
+        } else {
+            Session.openActiveSession(this, true, statusCallback);
+        }
+    }
+
+    private void onClickLogout() {
+        Session session = Session.getActiveSession();
+        if (!session.isClosed()) {
+            session.closeAndClearTokenInformation();
+        }
+    }
+
+    private void goToPreviewCamera(){
+        Intent previewCameraActivity = new Intent(MainActivity.this, PreviewCameraActivity.class);
+        startActivity(previewCameraActivity);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+    }
+
+    private class SessionStatusCallback implements Session.StatusCallback {
+        @Override
+        public void call(Session session, SessionState state, Exception exception) {
+            updateView();
+            Log.d(ACTIVITY_TAG, "call: " + session.isOpened() + " " + state.isOpened());
+            if(session.isOpened()){
+                goToPreviewCamera();
             }
-        });
-        previewCameraContainer.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
