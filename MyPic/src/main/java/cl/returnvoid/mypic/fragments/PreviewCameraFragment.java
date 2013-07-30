@@ -34,11 +34,12 @@ public class PreviewCameraFragment extends Fragment {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preview = null;
+        Log.d("THIS", "onCreate");
+        preview = (PreviewCamera) getActivity().findViewById(R.id.preview);
     }
 
     public PreviewCamera getPreview(){
-        preview = (PreviewCamera) getActivity().findViewById(R.id.preview);
+        Log.d("THIS", preview.toString());
         return preview;
     }
 
@@ -81,6 +82,7 @@ public class PreviewCameraFragment extends Fragment {
         }
 
         public void releaseCamera(){
+            camera.stopPreview();
             camera.release();
         }
 
