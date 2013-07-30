@@ -48,6 +48,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         Session session = Session.getActiveSession();
+        Log.d(ACTIVITY_TAG, "onCreate");
         if (session == null) {
             if (savedInstanceState != null) {
                 session = Session.restoreSession(this, null, statusCallback, savedInstanceState);
@@ -67,13 +68,14 @@ public class MainActivity extends Activity {
     private void updateView() {
         Button facebookLogButton = (Button) findViewById(R.id.facebook_login_button);
         Session session = Session.getActiveSession();
+        Log.d(ACTIVITY_TAG, "updateView: " + session.isOpened());
         if (session.isOpened()) {
-            facebookLogButton.setText(R.string.facebook_login_button_label);
+            //facebookLogButton.setText(R.string.facebook_login_button_label);
             facebookLogButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) { onClickLogout(); }
             });
         } else {
-            facebookLogButton.setText(R.string.facebook_logout_button_label);
+            //facebookLogButton.setText(R.string.facebook_logout_button_label);
             facebookLogButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) { onClickLogin(); }
             });
@@ -100,6 +102,7 @@ public class MainActivity extends Activity {
         Session session = Session.getActiveSession();
         if (!session.isClosed()) {
             session.closeAndClearTokenInformation();
+            updateView();
         }
     }
 
@@ -128,13 +131,13 @@ public class MainActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        //previewCameraFragment.getPreview().openCamera();
+        Log.d(ACTIVITY_TAG, "onResume");
+        updateView();
     }
 
     @Override
     public void onPause(){
         super.onPause();
-        //previewCameraFragment.getPreview().releaseCamera();
     }
 
     @Override

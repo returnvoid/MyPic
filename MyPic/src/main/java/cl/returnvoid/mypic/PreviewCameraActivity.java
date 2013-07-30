@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import com.facebook.Request;
 import cl.returnvoid.mypic.fragments.PreviewCameraFragment;
 
 public class PreviewCameraActivity extends FragmentActivity {
+    private String PREVIEW_CAMERA_ACTIVITY_TAG = "PREVIEW_CAMERA_ACTIVITY_TAG";
     protected Button shutterButton;
     public PreviewCameraFragment previewCameraFragment;
     private Request request;
@@ -59,6 +62,21 @@ public class PreviewCameraActivity extends FragmentActivity {
         request.executeAsync();
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if ((keyCode == KeyEvent.KEYCODE_BACK)){
+            Log.d(PREVIEW_CAMERA_ACTIVITY_TAG, "onKeyDown: ");
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(PREVIEW_CAMERA_ACTIVITY_TAG, "onDestroy");
+        previewCameraFragment.getPreview().releaseCamera();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

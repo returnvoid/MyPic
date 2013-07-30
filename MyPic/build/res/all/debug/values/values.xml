@@ -79,7 +79,7 @@
     <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64dp</dimen>
     <!-- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml -->
     <string name="action_settings">Settings</string>
-    <string name="app_id">171483252895769</string>
+    <string name="app_id">107309112809134</string>
     <string name="app_name">MyPic</string>
     <string name="apply_effect_label_button">Apply Effect</string>
     <string name="apply_text_label_button">Apply Text</string>
