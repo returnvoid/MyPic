@@ -21,6 +21,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import cl.returnvoid.mypic.ProcessImageActivity;
@@ -35,12 +39,6 @@ public class PreviewCameraFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("THIS", "onCreate");
-        preview = (PreviewCamera) getActivity().findViewById(R.id.preview);
-    }
-
-    public PreviewCamera getPreview(){
-        Log.d("THIS", preview.toString());
-        return preview;
     }
 
     @Override
@@ -51,8 +49,23 @@ public class PreviewCameraFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_preview_camera, container, false);
-        return view;
+        if(container == null){
+            return null;
+        }
+        LinearLayout mLinearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_preview_camera, container, false);
+        //View view = inflater.inflate(R.layout.fragment_preview_camera, container, false);
+        //preview = (PreviewCamera) getActivity().findViewById(R.id.preview);
+
+        Button mButton = (Button) mLinearLayout.findViewById(R.id.shutter_button);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //preview.capturePreviewCamera();
+            }
+        });
+
+        // after you've done all your manipulation, return your layout to be shown
+        return mLinearLayout;
     }
 
     /**

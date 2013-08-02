@@ -12,7 +12,7 @@ public final class R {
         public static final int animate_shutter_button=0x7f040000;
     }
     public static final class array {
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml 
          */
         public static final int pref_sync_frequency_titles=0x7f060000;
         public static final int pref_sync_frequency_values=0x7f060001;
@@ -160,10 +160,10 @@ containing a value of this type.
         public static final int title_text=0x7f010008;
     }
     public static final class color {
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/colors.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/colors.xml 
          */
         public static final int cl_returnvoid_mypic_grey=0x7f070000;
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values/values.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values/values.xml 
          */
         public static final int com_facebook_blue=0x7f070001;
         public static final int com_facebook_loginview_text_color=0x7f070002;
@@ -172,12 +172,12 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_not_connected_text_color=0x7f070005;
     }
     public static final class dimen {
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/dimens.xml 
- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values-sw720dp-land/dimens.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/dimens.xml 
+ From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values-sw720dp-land/dimens.xml 
          */
         public static final int activity_horizontal_margin=0x7f090000;
         public static final int activity_vertical_margin=0x7f090001;
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values/values.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values/values.xml 
          */
         public static final int com_facebook_loginview_height=0x7f090002;
         public static final int com_facebook_loginview_padding_bottom=0x7f090003;
@@ -231,38 +231,38 @@ containing a value of this type.
     }
     public static final class id {
         public static final int action_settings=0x7f080020;
-        public static final int apply_effect=0x7f080008;
-        public static final int button=0x7f080009;
-        public static final int com_facebook_login_activity_progress_bar=0x7f08000c;
-        public static final int com_facebook_picker_activity_circle=0x7f08000b;
-        public static final int com_facebook_picker_checkbox=0x7f08000e;
-        public static final int com_facebook_picker_checkbox_stub=0x7f080012;
-        public static final int com_facebook_picker_divider=0x7f080016;
-        public static final int com_facebook_picker_done_button=0x7f080015;
-        public static final int com_facebook_picker_image=0x7f08000f;
-        public static final int com_facebook_picker_list_section_header=0x7f080013;
-        public static final int com_facebook_picker_list_view=0x7f08000a;
-        public static final int com_facebook_picker_profile_pic_stub=0x7f080010;
-        public static final int com_facebook_picker_row_activity_circle=0x7f08000d;
-        public static final int com_facebook_picker_title=0x7f080011;
-        public static final int com_facebook_picker_title_bar=0x7f080018;
-        public static final int com_facebook_picker_title_bar_stub=0x7f080017;
-        public static final int com_facebook_picker_top_bar=0x7f080014;
-        public static final int com_facebook_placepickerfragment_search_box_stub=0x7f080019;
-        public static final int com_facebook_usersettingsfragment_login_button=0x7f08001e;
-        public static final int com_facebook_usersettingsfragment_logo_image=0x7f08001c;
-        public static final int com_facebook_usersettingsfragment_profile_name=0x7f08001d;
+        public static final int apply_effect=0x7f080007;
+        public static final int button=0x7f080008;
+        public static final int com_facebook_login_activity_progress_bar=0x7f08000b;
+        public static final int com_facebook_picker_activity_circle=0x7f08000a;
+        public static final int com_facebook_picker_checkbox=0x7f08000d;
+        public static final int com_facebook_picker_checkbox_stub=0x7f080011;
+        public static final int com_facebook_picker_divider=0x7f080015;
+        public static final int com_facebook_picker_done_button=0x7f080014;
+        public static final int com_facebook_picker_image=0x7f08000e;
+        public static final int com_facebook_picker_list_section_header=0x7f080012;
+        public static final int com_facebook_picker_list_view=0x7f080009;
+        public static final int com_facebook_picker_profile_pic_stub=0x7f08000f;
+        public static final int com_facebook_picker_row_activity_circle=0x7f08000c;
+        public static final int com_facebook_picker_title=0x7f080010;
+        public static final int com_facebook_picker_title_bar=0x7f080017;
+        public static final int com_facebook_picker_title_bar_stub=0x7f080016;
+        public static final int com_facebook_picker_top_bar=0x7f080013;
+        public static final int com_facebook_placepickerfragment_search_box_stub=0x7f080018;
+        public static final int com_facebook_usersettingsfragment_login_button=0x7f08001d;
+        public static final int com_facebook_usersettingsfragment_logo_image=0x7f08001b;
+        public static final int com_facebook_usersettingsfragment_profile_name=0x7f08001c;
         public static final int facebook_login_button=0x7f080003;
-        public static final int image=0x7f080006;
+        public static final int image=0x7f080005;
         public static final int large=0x7f080002;
-        public static final int linearLayout=0x7f080007;
+        public static final int linearLayout=0x7f080006;
         public static final int normal=0x7f080001;
-        public static final int picker_subtitle=0x7f08001b;
-        public static final int preview=0x7f08001f;
-        public static final int preview_camera_fragment=0x7f080004;
-        public static final int search_box=0x7f08001a;
-        public static final int shutter_button=0x7f080005;
+        public static final int picker_subtitle=0x7f08001a;
+        public static final int preview=0x7f08001e;
+        public static final int search_box=0x7f080019;
+        public static final int shutter_button=0x7f08001f;
         public static final int small=0x7f080000;
+        public static final int titles=0x7f080004;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -289,17 +289,17 @@ containing a value of this type.
         public static final int process_image=0x7f0c0002;
     }
     public static final class string {
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml 
          */
         public static final int action_settings=0x7f0a0000;
         public static final int app_id=0x7f0a0001;
         public static final int app_name=0x7f0a0002;
         public static final int apply_effect_label_button=0x7f0a0003;
         public static final int apply_text_label_button=0x7f0a0004;
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values/values.xml 
- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values-es/values.xml 
- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values-he/values.xml 
- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values-iw/values.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values/values.xml 
+ From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values-es/values.xml 
+ From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values-he/values.xml 
+ From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values-iw/values.xml 
          */
         public static final int com_facebook_choose_friends=0x7f0a0005;
         public static final int com_facebook_dialogloginactivity_ok_button=0x7f0a0006;
@@ -326,36 +326,36 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_log_in_button=0x7f0a001b;
         public static final int com_facebook_usersettingsfragment_logged_in=0x7f0a001c;
         public static final int com_facebook_usersettingsfragment_not_logged_in=0x7f0a001d;
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml 
          */
         public static final int facebook_login_button_label=0x7f0a001e;
         public static final int facebook_logout_button_label=0x7f0a001f;
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml 
          */
         public static final int pref_description_enabled_option=0x7f0a0020;
         public static final int pref_header_data_sync=0x7f0a0021;
         public static final int pref_header_general=0x7f0a0022;
         public static final int pref_title_enabled_option=0x7f0a0023;
         public static final int pref_title_sync_frequency=0x7f0a0024;
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings.xml 
          */
         public static final int shutter_button=0x7f0a0025;
         public static final int title_activity_preview_camera=0x7f0a0026;
         public static final int title_activity_process_image=0x7f0a0027;
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/strings_activity_settings.xml 
          */
         public static final int title_activity_settings=0x7f0a0028;
     }
     public static final class style {
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/styles.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values/styles.xml 
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values-v11/styles.xml 
+ From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values-v11/styles.xml 
  API 11 theme customizations can go here. 
- From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/src/main/res/values-v14/styles.xml 
+ From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/src/main/res/values-v14/styles.xml 
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f0b0000;
@@ -363,7 +363,7 @@ containing a value of this type.
          */
         public static final int AppTheme=0x7f0b0001;
         public static final int Orange_Button=0x7f0b0002;
-        /**  From: file:/Users/ggio/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values/values.xml 
+        /**  From: file:/Users/malamute/AndroidStudioProjects/MyPic/MyPic/build/exploded-bundles/MyPicLibrariesFacebookUnspecified.aar/res/values/values.xml 
          */
         public static final int com_facebook_loginview_default_style=0x7f0b0003;
         public static final int com_facebook_loginview_silver_style=0x7f0b0004;

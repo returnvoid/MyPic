@@ -62,6 +62,10 @@ public class MainActivity extends Activity {
             }
         }
 
+        if(session.isOpened()){
+            goToPreviewCamera();
+        }
+
         updateView();
     }
 

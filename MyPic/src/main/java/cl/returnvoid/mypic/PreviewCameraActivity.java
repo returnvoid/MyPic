@@ -18,7 +18,6 @@ import cl.returnvoid.mypic.fragments.PreviewCameraFragment;
 
 public class PreviewCameraActivity extends FragmentActivity {
     private String PREVIEW_CAMERA_ACTIVITY_TAG = "PREVIEW_CAMERA_ACTIVITY_TAG";
-    protected Button shutterButton;
     public PreviewCameraFragment previewCameraFragment;
     private Request request;
 
@@ -27,46 +26,16 @@ public class PreviewCameraActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_preview_camera);
-
-        shutterButton = (Button)findViewById(R.id.shutter_button);
-        shutterButton.setVisibility(View.INVISIBLE);
-
         Display display = getWindowManager().getDefaultDisplay();
 
-        previewCameraFragment = (PreviewCameraFragment) getSupportFragmentManager().findFragmentById(R.id.preview_camera_fragment);
-
-        Button shutterButton = (Button) findViewById(R.id.shutter_button);
-        shutterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Button btn = (Button) view;
-                btn.setVisibility(View.GONE);
-                showPreviewCameraContainer();
-                executeAsunc();
-            }
-        });
-    }
-
-    private void showPreviewCameraContainer(){
-        shutterButton.setVisibility(View.VISIBLE);
-        shutterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                previewCameraFragment.getPreview().capturePreviewCamera();
-            }
-        });
-        //previewCameraFragment.setVisibility(View.VISIBLE);
-    }
-
-    private void executeAsunc(){
-        request.executeAsync();
+        //previewCameraFragment = (PreviewCameraFragment) getSupportFragmentManager().findFragmentById(R.id.preview_camera_fragment);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
         if ((keyCode == KeyEvent.KEYCODE_BACK)){
             Log.d(PREVIEW_CAMERA_ACTIVITY_TAG, "onKeyDown: ");
-            finish();
+            //finish();
         }
         return super.onKeyDown(keyCode, event);
     }
