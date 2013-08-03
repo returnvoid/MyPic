@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.facebook.Request;
 
@@ -19,6 +20,7 @@ import cl.returnvoid.mypic.fragments.PreviewCameraFragment;
 public class PreviewCameraActivity extends FragmentActivity {
     private String PREVIEW_CAMERA_ACTIVITY_TAG = "PREVIEW_CAMERA_ACTIVITY_TAG";
     public PreviewCameraFragment previewCameraFragment;
+    PreviewCameraFragment.PreviewCamera previewCamera;
     private Request request;
 
     @Override
@@ -26,9 +28,25 @@ public class PreviewCameraActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_preview_camera);
+
         Display display = getWindowManager().getDefaultDisplay();
 
-        //previewCameraFragment = (PreviewCameraFragment) getSupportFragmentManager().findFragmentById(R.id.preview_camera_fragment);
+        previewCameraFragment = (PreviewCameraFragment) getSupportFragmentManager().findFragmentById(R.id.preview_camera_fragment);
+        previewCamera = (PreviewCameraFragment.PreviewCamera) findViewById(R.id.preview_camera_view);
+        //previewCamera.setLayoutParams(new RelativeLayout.LayoutParams(100, 250));
+
+        Button shutterButton = (Button) findViewById(R.id.shutter_button);
+        shutterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(PREVIEW_CAMERA_ACTIVITY_TAG, "BARKING!");
+                capturePreview();
+            }
+        });
+    }
+
+    protected void capturePreview(){
+        previewCamera.capturePreviewCamera();
     }
 
     @Override

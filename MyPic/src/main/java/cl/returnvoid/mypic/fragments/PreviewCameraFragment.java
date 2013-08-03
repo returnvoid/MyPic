@@ -34,7 +34,6 @@ import cl.returnvoid.mypic.R;
  * Created by ggio on 22-07-13.
  */
 public class PreviewCameraFragment extends Fragment {
-    protected PreviewCamera preview;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,23 +48,10 @@ public class PreviewCameraFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        if(container == null){
-            return null;
-        }
-        LinearLayout mLinearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_preview_camera, container, false);
-        //View view = inflater.inflate(R.layout.fragment_preview_camera, container, false);
-        //preview = (PreviewCamera) getActivity().findViewById(R.id.preview);
-
-        Button mButton = (Button) mLinearLayout.findViewById(R.id.shutter_button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //preview.capturePreviewCamera();
-            }
-        });
-
-        // after you've done all your manipulation, return your layout to be shown
-        return mLinearLayout;
+        View view = inflater.inflate(R.layout.fragment_preview_camera, container, false);
+        //PreviewCameraFragment.PreviewCamera preview = (PreviewCameraFragment.PreviewCamera) getView().findViewById(R.id.preview_camera_view);
+        //preview.setLayoutParams(new RelativeLayout.LayoutParams(300, 300));
+        return view;
     }
 
     /**
